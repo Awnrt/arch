@@ -11,6 +11,7 @@ cd /home/jimbob/arch/st
 sudo make clean install
 cd /home/jimbob/arch/slstatus
 sudo make clean install
+echo "startx" >> /home/jimbob/.bash_profile
 echo "slstatus &" >> /home/jimbob/.xinitrc
 echo "exec dwm" >> /home/jimbob/.xinitrc
 sudo pacman -S alsa-utils pulseaudio pulsemixer
