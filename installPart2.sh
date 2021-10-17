@@ -33,7 +33,7 @@ bootctl install
 pacman -S intel-ucode
 echo "title Arch Linux" >> /boot/loader/entries/arch.conf
 echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
-echo "/intel-ucode.img" >> /boot/loader/entries/arch.conf
+echo "initrd /intel-ucode.img" >> /boot/loader/entries/arch.conf
 echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
 #Hardening boot path
 echo "options root=PARTUUID=$(blkid -s PARTUUID -o value /dev/nvme1n1p3) rw" nvidia-drm.modeset=1 intel_iommu=on >> /boot/loader/entries/arch.conf
