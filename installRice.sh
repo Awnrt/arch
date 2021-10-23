@@ -17,3 +17,4 @@ echo "slstatus &" >> /home/jimbob/.xinitrc
 echo "exec dwm" >> /home/jimbob/.xinitrc
 echo "PS1='\[\e[0;38;5;203m\][\[\e[0;38;5;214m\]\u\[\e[0;38;5;34m\]@\[\e[0;38;5;111m\]\h\[\e[0m\] \[\e[0;38;5;147m\]\W\[\e[0;38;5;203m\]]\[\e[0m\]$\[\e[0m\] \[\e[0m\]'" >> /home/jimbob/.bashrc
 sudo pacman -S alsa-utils pulseaudio pulsemixer
+sudo localectl --no-convert set-x11-keymap us,ru "" "" grp:ctrl_shift_toggle
