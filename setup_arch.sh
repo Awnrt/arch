@@ -3,22 +3,29 @@ LIGHTRED='\033[1;91m'
 WHITE='\033[1;97m'
 MAGENTA='\033[1;35m'
 CYAN='\033[1;96m'
+NoColor='\033[0m'
+
+printf ${MAGENTA}"Enter your disk label (sda, sdb, etc.): "
+printf ${NoColor}""
+
+read -p "" disk_drive
+disk_drive=${disk_drive:-sda}
 
 printf ${LIGHTGREEN}"Making filesystem...\n"
 #Making filesystem
-mkfs.fat -F32 /dev/nvme1n1p1
-mkswap /dev/nvme1n1p2
-swapon /dev/nvme1n1p2
-mkfs.ext4 /dev/nvme1n1p3
-mkfs.ext4 /dev/nvme1n1p4
+mkfs.fat -F32 /dev/$disk_drive"1"
+mkswap /dev/$disk_drive"2"
+swapon /dev/$disk_drive"2"
+mkfs.ext4 /dev/$disk_drive"3"
+mkfs.ext4 /dev/$disk_drive"4"
 
 printf ${LIGHTGREEN}"Mounting partitions...\n"
 #Mounting
-mount /dev/nvme1n1p3 /mnt
+mount /dev/$disk_drive"3" /mnt
 mkdir /mnt/boot
 mkdir /mnt/home
-mount /dev/nvme1n1p1 /mnt/boot
-mount /dev/nvme1n1p4 /mnt/home
+mount /dev/$disk_drive"1" /mnt/boot
+mount /dev/$disk_drive"4" /mnt/home
 
 printf ${LIGHTGREEN}"Searching for fastest mirrors...\n"
 #Rankmirrors
