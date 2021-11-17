@@ -5,6 +5,8 @@ MAGENTA='\033[1;35m'
 CYAN='\033[1;96m'
 NoColor='\033[0m'
 
+printf ${LIGHTGREEN}""
+pacman -Sy nano bash-completion
 printf ${MAGENTA}"Generating locale...\n"
 printf ${LIGHTGREEN}""
 
