@@ -5,6 +5,12 @@ MAGENTA='\033[1;35m'
 CYAN='\033[1;96m'
 NoColor='\033[0m'
 
+printf ${MAGENTA}"Enter your disk label (sda, sdb, etc.): "
+printf ${NoColor}""
+
+read -p "" disk_drive
+disk_drive=${disk_drive:-sda}
+
 printf ${LIGHTGREEN}""
 pacman -Sy nano bash-completion
 printf ${MAGENTA}"Generating locale...\n"
@@ -100,6 +106,9 @@ echo "[Action]" >> /etc/pacman.d/hooks/nvidia
 echo "Depends=mkinitcpio" >> /etc/pacman.d/hooks/nvidia
 echo "When=PostTransaction" >> /etc/pacman.d/hooks/nvidia
 echo "Exec=/usr/bin/mkinitcpio -P" >> /etc/pacman.d/hooks/nvidia
+
+echo "PS1='\[\e[0;38;5;203m\][\[\e[0;38;5;214m\]\u\[\e[0;38;5;34m\]@\[\e[0;38;5;111m\]\h\[\e[0m\] \[\e[0;38;5;147m\]\W\[\e[0;38;5;203m\]]\[\e[0m\]$\[\e[0m\] \[\e[0m\]'" >> /home/$_username/.bashrc
+echo "include /usr/share/nano/*.nanorc" >> /home/$_username/.nanorc
 
 printf ${LIGHTRED}"\nFinished!\nNow you need to add this stuff into modules list PATH /etc/mkinitcpio.conf\nMODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)\nAnd after that you can EXIT and reboot your system\n"
 printf ${LIGHTGREEN}""
