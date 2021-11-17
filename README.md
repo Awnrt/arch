@@ -11,11 +11,11 @@ Arch Linux guide <https://www.youtube.com/watch?v=H1ieRvLRxP0>
 ```sh
 sudo pacman -Sy git
 ```
+- Use gdisk and cgdisk to create partitions
 - Clone this repository
 ```sh
 git clone https://github.com/Awnrt/arch
 ```
-- Use gdisk and cgdisk to create partitions
 ```sh
 cd arch
 ./setup_arch.sh
