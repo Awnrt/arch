@@ -46,5 +46,6 @@ pacstrap -i /mnt base base-devel linux linux-headers
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
 cp post_chroot.sh /mnt
+cp setup_kde.sh /mnt
 clear
 arch-chroot /mnt ./post_chroot.sh
