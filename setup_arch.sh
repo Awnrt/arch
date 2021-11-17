@@ -10,6 +10,7 @@ printf ${NoColor}""
 
 read -p "" disk_drive
 disk_drive=${disk_drive:-sda}
+#disk_chk=("/dev/${disk_drive}")
 
 printf ${MAGENTA}"Making filesystem...\n"
 printf ${LIGHTGREEN}""
