@@ -1,6 +1,5 @@
 # Arch Linux Installation script
 #### Based on Mutahar Anas guide
-**Script doesn't install DE or WM**
 **It is basically for NVIDIA/Intel hardware**
 **If you have AMD you need to change a couple of things**
 SomeOrdinaryGamers <https://www.youtube.com/c/SomeOrdinaryGamers>
