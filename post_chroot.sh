@@ -107,7 +107,7 @@ echo "Depends=mkinitcpio" >> /etc/pacman.d/hooks/nvidia
 echo "When=PostTransaction" >> /etc/pacman.d/hooks/nvidia
 echo "Exec=/usr/bin/mkinitcpio -P" >> /etc/pacman.d/hooks/nvidia
 
-echo "PS1='\[\e[0;38;5;203m\][\[\e[0;38;5;214m\]\u\[\e[0;38;5;34m\]@\[\e[0;38;5;111m\]\h\[\e[0m\] \[\e[0;38;5;147m\]\W\[\e[0;38;5;203m\]]\[\e[0m\]$\[\e[0m\] \[\e[0m\]'" >> /home/$_username/.bashrc
+echo "PS1='\[\e[0m\]{\[\e[0;38;5;226m\]\d \[\e[0;38;5;226m\]\A\[\e[0m\]}\[\e[0;38;5;82m\]\h\[\e[0m\]:\[\e[0;38;5;111m\]~ \[\e[0;38;5;196m\]\u\[\e[0m\]% \[\e[0m\]'" >> /home/$_username/.bashrc
 echo "include /usr/share/nano/*.nanorc" >> /home/$_username/.nanorc
 
 cd /mnt
