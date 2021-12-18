@@ -33,8 +33,8 @@ mount /dev/$disk_drive"4" /mnt/home
 printf ${MAGENTA}"Installing RankMirrors...\n"
 printf ${LIGHTGREEN}""
 
-pacman -Sy
-pacman -S pacman-contrib
+pacman -Sy --noconfirm
+pacman -S pacman-contrib --noconfirm
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 printf ${MAGENTA}"Searching for fastest mirrors...\n"
 printf ${LIGHTGREEN}""
