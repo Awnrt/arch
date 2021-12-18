@@ -12,7 +12,7 @@ read -p "" disk_drive
 disk_drive=${disk_drive:-sda}
 
 printf ${LIGHTGREEN}""
-pacman -Sy nano bash-completion
+pacman -Sy nano bash-completion --noconfirm
 printf ${MAGENTA}"Generating locale...\n"
 printf ${LIGHTGREEN}""
 
@@ -38,7 +38,7 @@ printf ${LIGHTGREEN}""
 
 echo "[multilib]" >> /etc/pacman.conf
 echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
-pacman -Sy
+pacman -Sy --noconfirm
 
 printf ${MAGENTA}"Enabling fstrim.timer...\n"
 printf ${LIGHTGREEN}""
@@ -67,7 +67,7 @@ bootctl install
 printf ${MAGENTA}"Installing intel-ucode...\n"
 printf ${LIGHTGREEN}""
 
-pacman -S intel-ucode
+pacman -S intel-ucode --noconfirm
 
 printf ${MAGENTA}"Creating configuration file for bootloader...\n"
 printf ${LIGHTGREEN}""
@@ -83,14 +83,14 @@ clear
 printf ${MAGENTA}"Installing DHCPCD...\n"
 printf ${LIGHTGREEN}""
 
-pacman -S dhcpcd
+pacman -S dhcpcd --noconfirm
 systemctl enable dhcpcd@eno1.service
 
 printf ${MAGENTA}"Installing NVIDIA Drivers...\n"
 printf ${LIGHTGREEN}""
 
-pacman -S linux-headers
-pacman -S nvidia-dkms nvidia-utils opencl-nvidia libglvnd lib32-libglvnd lib32-nvidia-utils lib32-opencl-nvidia nvidia-settings
+pacman -S linux-headers --noconfirm
+pacman -S nvidia-dkms nvidia-utils opencl-nvidia libglvnd lib32-libglvnd lib32-nvidia-utils lib32-opencl-nvidia nvidia-settings --noconfirm
 
 printf ${MAGENTA}"Creating hooks for NVIDIA...\n"
 printf ${LIGHTGREEN}""
