@@ -36,10 +36,9 @@ systemctl enable fstrim.timer
 
 useradd -m -g users -G wheel,storage,power -s /bin/bash $_username
 
-echo "Enter root password"
-passwd
-echo "Enter user password"
-passwd $_username
+echo root:$_rootpasswd | chpasswd
+
+echo $_username:$_userpasswd | chpasswd
 
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 echo "Defaults rootpw" >> /etc/sudoers
