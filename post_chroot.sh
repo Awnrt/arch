@@ -92,6 +92,8 @@ printf ${LIGHTGREEN}""
 pacman -S linux-headers --noconfirm
 pacman -S nvidia-dkms nvidia-utils opencl-nvidia libglvnd lib32-libglvnd lib32-nvidia-utils lib32-opencl-nvidia nvidia-settings --noconfirm
 
+sudo sed -i -e 's/MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/g' /etc/mkinitcpio.conf
+
 printf ${MAGENTA}"Creating hooks for NVIDIA...\n"
 printf ${LIGHTGREEN}""
 
