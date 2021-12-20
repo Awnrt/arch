@@ -11,7 +11,12 @@ Arch Linux guide <https://www.youtube.com/watch?v=H1ieRvLRxP0>
 ```sh
 sudo pacman -Sy git
 ```
-- Use gdisk and cgdisk to create partitions
+- Use gdisk and cgdisk to create partitions like that:
+- part1 boot partition
+- part2 swap partition
+- part3 root partition
+- part4 home partition
+
 - Clone this repository
 ```sh
 git clone https://github.com/Awnrt/arch
