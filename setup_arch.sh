@@ -11,6 +11,16 @@ printf ${NoColor}""
 read -p "" disk_drive
 disk_drive=${disk_drive:-sda}
 #disk_chk=("/dev/${disk_drive}")
+printf ${MAGENTA}"Hostname: "
+printf ${NoColor}""
+read -p "" _hostname
+_hostname=${_hostname:-overlord}
+
+printf ${MAGENTA}"Username: "
+printf ${NoColor}""
+read -p "" _username
+_username=${_username:-jimbob}
+
 
 printf ${MAGENTA}"Making filesystem...\n"
 printf ${LIGHTGREEN}""
@@ -49,4 +59,6 @@ cp post_chroot.sh /mnt
 cp setup_kde.sh /mnt
 clear
 export disk_drive
+export _hostname
+export _username
 arch-chroot /mnt ./post_chroot.sh
