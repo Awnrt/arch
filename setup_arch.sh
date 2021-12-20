@@ -42,7 +42,7 @@ rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 printf ${MAGENTA}"Installing Arch...\n"
 printf ${LIGHTGREEN}""
 
-pacstrap -i /mnt base base-devel linux linux-headers
+pacstrap -i /mnt base base-devel linux linux-headers --noconfirm
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
 cp post_chroot.sh /mnt
