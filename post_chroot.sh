@@ -5,12 +5,6 @@ MAGENTA='\033[1;35m'
 CYAN='\033[1;96m'
 NoColor='\033[0m'
 
-printf ${MAGENTA}"Enter your disk label (sda, sdb, etc.): "
-printf ${NoColor}""
-
-read -p "" disk_drive
-disk_drive=${disk_drive:-sda}
-
 printf ${LIGHTGREEN}""
 pacman -Sy nano bash-completion --noconfirm
 printf ${MAGENTA}"Generating locale...\n"
@@ -26,10 +20,6 @@ printf ${LIGHTGREEN}""
 ln -s /usr/share/zoneinfo/Europe/Moscow > /etc/localtime
 hwclock --systohc --utc
 clear
-printf ${MAGENTA}"Type in hostname: "
-printf ${NoColor}""
-read -p "" _hostname
-_hostname=${_hostname:-overlord}
 
 echo $_hostname > /etc/hostname
 
@@ -43,11 +33,6 @@ pacman -Sy --noconfirm
 printf ${MAGENTA}"Enabling fstrim.timer...\n"
 printf ${LIGHTGREEN}""
 systemctl enable fstrim.timer
-
-printf ${MAGENTA}"Username: "
-printf ${NoColor}""
-read -p "" _username
-_username=${_username:-jimbob}
 
 useradd -m -g users -G wheel,storage,power -s /bin/bash $_username
 
@@ -109,7 +94,6 @@ echo "Depends=mkinitcpio" >> /etc/pacman.d/hooks/nvidia
 echo "When=PostTransaction" >> /etc/pacman.d/hooks/nvidia
 echo "Exec=/usr/bin/mkinitcpio -P" >> /etc/pacman.d/hooks/nvidia
 
-echo "PS1='\[\e[0m\]{\[\e[0;38;5;226m\]\d \[\e[0;38;5;226m\]\A\[\e[0m\]}\[\e[0;38;5;82m\]\h\[\e[0m\]:\[\e[0;38;5;111m\]~ \[\e[0;38;5;196m\]\u\[\e[0m\]% \[\e[0m\]'" >> /home/$_username/.bashrc
 echo "include /usr/share/nano/*.nanorc" >> /home/$_username/.nanorc
 
 cd /mnt
