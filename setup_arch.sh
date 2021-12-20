@@ -21,6 +21,16 @@ printf ${NoColor}""
 read -p "" _username
 _username=${_username:-jimbob}
 
+printf ${LIGHTRED}"ROOT password: "
+printf ${NoColor}""
+read -p "" _rootpasswd
+_rootpasswd=${_rootpasswd:-1nsdj}
+
+printf ${MAGENTA}"User password: "
+printf ${NoColor}""
+read -p "" _userpasswd
+_userpasswd=${_userpasswd:-kekw}
+
 
 printf ${MAGENTA}"Making filesystem...\n"
 printf ${LIGHTGREEN}""
@@ -61,4 +71,6 @@ clear
 export disk_drive
 export _hostname
 export _username
+export _rootpasswd
+export _userpasswd
 arch-chroot /mnt ./post_chroot.sh
