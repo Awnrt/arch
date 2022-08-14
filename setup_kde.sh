@@ -6,8 +6,8 @@ CYAN='\033[1;96m'
 NoColor='\033[0m'
 
 clear
-printf ${MAGENTA}"Installing KDE...\n"
-printf ${LIGHTGREEN}""
+printf ${LIGHTRED}"Installing KDE...\n"
+printf ${NoColor}""
 pacman -Sy networkmanager --noconfirm
 systemctl enable NetworkManager.service
 pacman -S xorg-server xorg-apps xorg-xinit xorg-twn xorg-xclock xterm --noconfirm
