@@ -6,7 +6,7 @@ CYAN='\033[1;96m'
 NoColor='\033[0m'
 
 printf ${NoColor}""
-pacman -Sy nano bash-completion --noconfirm
+pacman -Sy bash-completion --noconfirm
 printf ${LIGHTRED}"Generating locale...\n"
 printf ${NoColor}""
 
