@@ -10,6 +10,8 @@ printf ${NoColor}""
 
 read -p "" disk_drive
 disk_drive=${disk_drive:-sda}
+without_p_nvme=${disk_drive//p}
+
 #disk_chk=("/dev/${disk_drive}")
 printf ${LIGHTRED}"Hostname: "
 printf ${NoColor}""
@@ -30,6 +32,49 @@ printf ${LIGHTRED}"User password: "
 printf ${NoColor}""
 read -p "" _userpasswd
 _userpasswd=${_userpasswd:-kekw}
+
+sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | gdisk /dev/$without_p_nvme
+x
+z
+y
+y
+EOF
+sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk /dev/$without_p_nvme
+g
+n
+
+
++512M
+y
+t
+1
+n
+
+
++8Glsbl
+y
+t
+2
+19
+n
+
+
++35G
+y
+t
+3
+20
+n
+
+
++67G
+y
+t
+4
+20
+w
+
+EOF
 
 printf ${LIGHTRED}"Making filesystem...\n"
 printf ${NoColor}""
