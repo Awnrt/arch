@@ -31,65 +31,23 @@ printf ${NoColor}""
 read -p "" _userpasswd
 _userpasswd=${_userpasswd:-kekw}
 
-
-printf ${LIGHTRED}"Partitioning the disk...\n"
-printf ${NoColor}""
-
-sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | gdisk /dev/$disk_drive
-x
-z
-y
-y
-EOF
-sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk /dev/$disk_drive
-g
-n
-
-
-+512M
-t
-1
-n
-
-
-+8G
-t
-2
-19
-n
-
-
-+35G
-t
-3
-20
-n
-
-
-+67G
-t
-4
-20
-w
-
-EOF
 printf ${LIGHTRED}"Making filesystem...\n"
 printf ${NoColor}""
 
-mkfs.fat -F32 /dev/$disk_drive"p1"
-mkswap /dev/$disk_drive"p2"
-swapon /dev/$disk_drive"p2"
-mkfs.ext4 /dev/$disk_drive"p3"
-mkfs.ext4 /dev/$disk_drive"p4"
+mkfs.fat -F32 /dev/$disk_drive"1"
+mkswap /dev/$disk_drive"2"
+swapon /dev/$disk_drive"2"
+mkfs.ext4 /dev/$disk_drive"3"
+mkfs.ext4 /dev/$disk_drive"4"
 
 printf ${LIGHTRED}"Mounting partitions...\n"
 printf ${NoColor}""
 
-mount /dev/$disk_drive"p3" /mnt
+mount /dev/$disk_drive"3" /mnt
 mkdir /mnt/boot
 mkdir /mnt/home
-mount /dev/$disk_drive"p1" /mnt/boot
-mount /dev/$disk_drive"p4" /mnt/home
+mount /dev/$disk_drive"1" /mnt/boot
+mount /dev/$disk_drive"4" /mnt/home
 
 printf ${LIGHTRED}"Installing RankMirrors...\n"
 printf ${NoColor}""
