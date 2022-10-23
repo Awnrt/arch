@@ -33,12 +33,6 @@ printf ${NoColor}""
 read -p "" _userpasswd
 _userpasswd=${_userpasswd:-kekw}
 
-sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | gdisk /dev/$without_p_nvme
-x
-z
-y
-y
-EOF
 sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk /dev/$without_p_nvme
 g
 n
